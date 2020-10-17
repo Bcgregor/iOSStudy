@@ -44,7 +44,7 @@
 
 ![protocolEx1](./protocolEx2.png)
 
-- 가령 CustomStringConvertible 이라는 protocol을 사용하기 위해선, description을 반드시 구현해야 한다. (해당 프로토콜은 객체의 속성값을 설명해주는 프로퍼티를 가진 프로토콜이다.)
+- 가령 CustomStringConvertible 이라는 protocol을 사용하기 위해선, description을 반드시 구현해야 한다.(해당 프로토콜은 객체의 속성값을 설명해주는 프로퍼티를 가진 프로토콜이다.)
 
 # Property
 - 스위프트에서는 data 파트를 프로퍼티라고 합니다.
