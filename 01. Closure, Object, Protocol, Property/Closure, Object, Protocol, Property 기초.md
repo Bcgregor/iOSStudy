@@ -19,7 +19,7 @@
 
 
 >- 클로저 실사용 예
-
+>
 >![cosureEx1](./closureEx1.png)
 >![closureEx2](./closureEx2.png)
 >![closureEx3](./closureEx3.png)
