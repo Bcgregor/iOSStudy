@@ -1,4 +1,4 @@
-# 1.collectionView(_:layout:sizeForItemAt:)
+# 1. collectionView(_:layout:sizeForItemAt:)
 Asks the delegate for the size of the specified item’s cell.
 Language.
 
