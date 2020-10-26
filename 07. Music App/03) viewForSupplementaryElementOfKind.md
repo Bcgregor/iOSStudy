@@ -24,7 +24,7 @@ Asks your data source object to provide a supplementary view to display in the c
 
 <br>
 
-## ◼️ 헤더뷰를 추가했으면, 그 안을, 필요로 하는 UI Component로 꾸며준다.
+## ◼️ Suplemnetary View로 쓸 Collection Reusable View 를 추가했으면, 그 안을, 필요로 하는 UI Component로 꾸며준다.
 
 ![HeaderEx04](./HeaderEx04.png) 
 
@@ -46,19 +46,21 @@ UI Component 와 Class file을 연결시킨 후 클래스의 아웃렛 변수들
 
 > 헤더뷰에는 "오늘의 추천곡"을 띄울 예정.
 
-헤더뷰 클래스 내부에 값을 업데이트 할 함수와 버튼이 클릭되었을 때 할 함수를 구현한다.
+헤더뷰 클래스 내부에 값을 업데이트 할 함수와 버튼이 클릭되었을 때 수행할 함수를 구현한다.
 
 ![HeaderEx06](./HeaderEx06.png)
 
-여기서 update(item:) 만을 사용해서 데이터 값을 채워놓으면, 헤더뷰의 화면은 완성된다.
+여기서 update(with:) 만을 사용해서 데이터 값을 채워놓으면, 헤더뷰의 화면은 완성된다.
 
-그러나, 우리가 최종적으로 하고 싶은 것은 헤더뷰를 클릭했을 때(헤더뷰 위의 숨겨놓은 버튼을 눌렀을 때) Player 를 띄우는 것이다.
+추가적으로 하고 싶은 것은 헤더뷰를 클릭했을 때(헤더뷰 위의 숨겨놓은 버튼을 눌렀을 때) Player 를 띄우는 것이다.
 
-이를 위해 cardTapped 함수 내에 클로저로 선언해두었던 tapHandler에 item을 끼워서 넘긴다.
+이를 위해 cardTapped(_:) 내에 클로저로 선언해두었던 tapHandler에 item을 끼워서 넘긴다.
 
-그러니까, 버튼이 탭 되었을 때! 이 헤더뷰를 구성하는 뷰 컨트롤러 내에 있는 함수에서, 이 tapHandler 의 클로저 부분을 구현하면 된다.
+그러니까, 버튼이 탭 되었을 때! 이 Collection Reusable View를 가지고 있는 뷰 컨트롤러에서, 이 tapHandler 의 클로저를 구현하면 된다.
 
-item을 넘겨서 왔기 때문에, 그 item을 가지고 player를 구성하면 아주 간단하다.
+이는 당연히 collectionView(_:viewForSupplementaryElementOfKind:at:) 내부에 구현될 것이다.
+
+cardTapped(_:)에서 item을 인자로 넘겨오기 때문에, 그 item을 가지고 player를 구성하면 아주 간단하다.
 
 근데! 이 Player는 아직 구현이 안되어 있기 때문에 구색만 갖추어두고 넘어간다.
 
@@ -66,9 +68,20 @@ item을 넘겨서 왔기 때문에, 그 item을 가지고 player를 구성하면
 
 셀을 구현할 때 썼던 dequeueReusableCell(withReuseIdentifier:for:) 함수와 비슷하다.
 
-헤더뷰는 SupplementaryView 를 상단에 갖다놓은 것이므로 하단에 갖다놓으면 푸터)! dequeueReusableSupplementaryView(ofKind:withReuseIdentifier:for:) 함수를 사용하면 된다.
+Reusable Cell이 아니라 Reusable Supplementary View를 구성할 뿐.
 
-아주 간단~하다.
+dequeueReusableSupplementaryView(ofKind:withReuseIdentifier:for:)
+
+> __*ofKind elementKind: String*__
+>
+> The kind of supplementary view to retrieve. This value is defined by the layout object. This parameter must not be nil.
+
+
+(헤더뷰는 SupplementaryView 를 상단에 갖다놓은 것이므로 하단에 갖다놓으면 푸터가 된다.)
+
+해당 뷰를 구현할 때, dequeueReusableSupplementaryView(ofKind:withReuseIdentifier:for:) 함수를 사용하면 된다.
+
+아~주 간단하쥬?
 
 <br><br>
 
