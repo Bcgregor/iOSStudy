@@ -94,7 +94,7 @@ let dataTask = session.dataTask(with: requestURL) { (data, response, error) in
         let response = try decoder.decode(Response.self, from: resultData)
         let tracks = response.tracks
         
-        print("---> Track Count: \(tracks)")
+        print("---> Track Count: \(tracks.count)")
     } catch let error {
         print("---> error: \(error.localizedDescription)")
     }
